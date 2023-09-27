@@ -20,7 +20,7 @@ import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import Child from '../Child/Child';
-
+import Timeline from '../Timeline/Timeline';
 import './App.css';
 
 function App() {
@@ -125,6 +125,19 @@ function App() {
           }
         </Route>
 
+        <Route
+          exact
+          path="/timeline/:id"
+        >
+          {user.id ?
+            // If the user is already logged in,
+            // show the Child component
+            <Timeline />
+            :
+            // Otherwise, redirect to the login page
+            <Redirect to="/login" />
+          }
+        </Route>
 
           {/* If none of the other routes matched, we will show a 404. */}
           <Route>

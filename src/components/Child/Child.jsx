@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import moment from 'moment';
 import useInterval from './useInterval';  // Assume useInterval is in the same directory
 import './Child.css';
+import { Link } from 'react-router-dom';  // Import Link from react-router-dom
+
 
 function Child() {
     const dispatch = useDispatch();
@@ -36,22 +38,23 @@ function Child() {
     }
 
     return (
-        <div className="container">  {/* It's good practice to wrap your content in a container for better styling */}
-            <h1>Your Children</h1>
-            {Array.isArray(children) && children.map((child, index) => (
-              <div key={index} className="card">
-                <div className="card-body">
-                  <h5 className="card-title">{child.first} {child.middle} {child.last}</h5>
-                  <p className="card-text">
-                    Birthday: {moment.utc(child.birthday).format('MM/DD/YYYY')} <br />
-                    Age: {calculateAge(child.birthday, child.hour, child.min)} <br />
-                    Gender: {child.gender}
-                  </p>
-                </div>
+      <div className="container">
+          <h1>Your Children</h1>
+          {Array.isArray(children) && children.map((child, index) => (
+            <div key={index} className="card">
+              <div className="card-body">
+                <h5 className="card-title">{child.first} {child.middle} {child.last}</h5>
+                <p className="card-text">
+                  Birthday: {moment.utc(child.birthday).format('MM/DD/YYYY')} <br />
+                  Age: {calculateAge(child.birthday, child.hour, child.min)} <br />
+                  Gender: {child.gender}
+                </p>
+                <Link to={`/timeline/${child.id}`} className="btn btn-primary">View Timeline</Link>  {/* Add this line */}
               </div>
-            ))}
-        </div>
-      );
-  }
+            </div>
+          ))}
+      </div>
+    );
+}
 
 export default Child;
