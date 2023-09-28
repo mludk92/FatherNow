@@ -1,11 +1,10 @@
 /* Timeline.css */
+
 .timeline-container {
-    height: 300px;  /* Adjust height, margin, and padding as needed */
+    height: 300px;
     margin: 0 auto;
     padding: 0;
-    
 }
-
 
 .timeline-container .node {
     position: absolute;
@@ -14,14 +13,66 @@
     padding: 5px;
     border-radius: 3px;
     font-size: 12px;
-    
 }
 
 .vis.timeline .item {
-    color:red;
+    color: red;
     background-color: red;
 }
 
-.timeline.item {
-    background-color: blue;
+/* New styles for the form */
+.timeline-form {
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid #000;
+    border-radius: 5px;
 }
+
+.timeline-input{
+    display: block;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #000;
+    background-color: rgb(201, 199, 199);
+    color:#000000 ;    
+    border-radius: 32px;
+    
+}
+
+.timeline-textarea-container {
+    width: 75%;
+    height: 200px;
+    margin-bottom: 10px;
+    
+  }
+  
+  .timeline-textarea {
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    border: 1px solid #000;
+    border-radius: 32px;
+    background-color: rgb(201, 199, 199);
+    color:black;
+  }
+  
+  
+
+.timeline-button {
+    padding: 10px 40px;
+    border: none;
+    border-radius: 32px;
+    background-color: #eeff00; /* Blue color */
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.timeline-button:hover {
+    background-color: red; /* Darker blue on hover */
+}
+
+.timeline-input::placeholder {
+    color: black;
+  }
+

@@ -49,7 +49,7 @@ function Child() {
                   Age: {calculateAge(child.birthday, child.hour, child.min)} <br />
                   Gender: {child.gender}
                 </p>
-                <Link to={`/timeline/${child.id}`} className="btn btn-primary">View Timeline</Link>  {/* Add this line */}
+                <Link to={`/timeline/${child.id}`} className="btn btn-primary">View Timeline</Link> 
               </div>
             </div>
           ))}

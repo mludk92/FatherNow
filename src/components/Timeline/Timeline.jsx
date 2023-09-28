@@ -4,6 +4,8 @@ import { useParams } from 'react-router-dom';
 import { DataSet, Timeline } from 'vis-timeline/standalone';
 import './Timeline.css';  
 
+import  TimelineForm from './TimelineForm.jsx';
+
 function TimelineComponent() {
     const dispatch = useDispatch();
     const { id } = useParams();
@@ -50,13 +52,6 @@ function TimelineComponent() {
                 orientation: { axis: 'top', item: 'bottom' },
                 locale: 'en_US',
                 zoomable: true,
-                template: function(item, element, data) {
-                    return `
-                        <div onclick="handleItemClick(${item.id})" style="color: 'red'}">
-                            ${data.content}
-                        </div>
-                    `;
-                },
             };
     
             // Instantiate the timeline
@@ -69,10 +64,8 @@ function TimelineComponent() {
             }
         };
     }, [childData]);
-    // New function to handle item clicks
-    function handleItemClick(itemId) {
-        console.log(`Item ${itemId} clicked`);
-    }
+
+
     return (
         <div className="container">
             <h1>Timeline for {childData.first}</h1>
@@ -81,6 +74,9 @@ function TimelineComponent() {
             ) : (
                 <div>Loading or no child data found for id: {id}</div>
             )}
+            <div>
+                <TimelineForm />
+            </div>
         </div>
     );
 }
