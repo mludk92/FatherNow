@@ -32,7 +32,10 @@ function TimelineComponent() {
             const items = Array.from({ length: 19 }, (_, i) => ({
                 id: i,
                 content: i === 0 ? 'Birth' : `${i} year${i > 1 ? 's' : ''}`,
-                start: new Date(birthday.getFullYear() + i, birthday.getMonth(), birthday.getDate())
+                start: new Date(birthday.getFullYear() + i, birthday.getMonth(), birthday.getDate()),
+                style: "color: black; background-color: white; border-color: black; border-width: 1px; border-style: solid; border-radius: 32%;",
+                className: "timeline-item",
+                
             }));
     
             const itemsDataSet = new DataSet(items);
@@ -44,7 +47,16 @@ function TimelineComponent() {
                 max: new Date(birthday.getFullYear() + 19, birthday.getMonth(), birthday.getDate()),
                 start: new Date(birthday.getFullYear() - 1, birthday.getMonth(), birthday.getDate()),  // 1 year before the first event
                 end: new Date(birthday.getFullYear() + 19, birthday.getMonth(), birthday.getDate()),  // 1 year after the last event
-                orientation: 'bottom'
+                orientation: { axis: 'top', item: 'bottom' },
+                locale: 'en_US',
+                zoomable: true,
+                template: function(item, element, data) {
+                    return `
+                        <div onclick="handleItemClick(${item.id})" style="color: 'red'}">
+                            ${data.content}
+                        </div>
+                    `;
+                },
             };
     
             // Instantiate the timeline
@@ -57,10 +69,13 @@ function TimelineComponent() {
             }
         };
     }, [childData]);
-
+    // New function to handle item clicks
+    function handleItemClick(itemId) {
+        console.log(`Item ${itemId} clicked`);
+    }
     return (
         <div className="container">
-            <h1>Timeline</h1>
+            <h1>Timeline for {childData.first}</h1>
             {childData ? (
                 <div ref={timelineContainerRef} className="timeline-container"></div>
             ) : (
